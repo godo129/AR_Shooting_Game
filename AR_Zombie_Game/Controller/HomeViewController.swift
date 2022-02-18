@@ -8,11 +8,19 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    }
 
+    }
+    
+    @IBAction func PlayGameButtonTapped(_ sender: Any) {
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ARView")
+        present(vc!, animated: true, completion: nil)
+    }
+    
+    @IBAction func LeaderBoardButtonTapped(_ sender: Any) {
+    }
+    
 }
