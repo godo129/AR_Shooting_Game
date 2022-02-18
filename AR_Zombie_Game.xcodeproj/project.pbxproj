@@ -13,6 +13,7 @@
 		F1E1817027BF459F0059E322 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E1816E27BF459F0059E322 /* Main.storyboard */; };
 		F1E1817227BF45A10059E322 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1E1817127BF45A10059E322 /* Assets.xcassets */; };
 		F1E1817527BF45A10059E322 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1E1817327BF45A10059E322 /* LaunchScreen.storyboard */; };
+		F1E1817C27BF45DB0059E322 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1817B27BF45DB0059E322 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		F1E1816F27BF459F0059E322 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F1E1817127BF45A10059E322 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1E1817427BF45A10059E322 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F1E1817B27BF45DB0059E322 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,14 +57,39 @@
 		F1E1816727BF459F0059E322 /* AR_Zombie_Game */ = {
 			isa = PBXGroup;
 			children = (
-				F1E1816827BF459F0059E322 /* AppDelegate.swift */,
+				F1E1817F27BF47510059E322 /* Model */,
+				F1E1817D27BF47410059E322 /* View */,
+				F1E1817E27BF47480059E322 /* Controller */,
 				F1E1816A27BF459F0059E322 /* art.scnassets */,
-				F1E1816C27BF459F0059E322 /* ViewController.swift */,
-				F1E1816E27BF459F0059E322 /* Main.storyboard */,
 				F1E1817127BF45A10059E322 /* Assets.xcassets */,
-				F1E1817327BF45A10059E322 /* LaunchScreen.storyboard */,
 			);
 			path = AR_Zombie_Game;
+			sourceTree = "<group>";
+		};
+		F1E1817D27BF47410059E322 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F1E1816E27BF459F0059E322 /* Main.storyboard */,
+				F1E1817327BF45A10059E322 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F1E1817E27BF47480059E322 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F1E1817B27BF45DB0059E322 /* HomeViewController.swift */,
+				F1E1816C27BF459F0059E322 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F1E1817F27BF47510059E322 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F1E1816827BF459F0059E322 /* AppDelegate.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +166,7 @@
 			files = (
 				F1E1816D27BF459F0059E322 /* ViewController.swift in Sources */,
 				F1E1816927BF459F0059E322 /* AppDelegate.swift in Sources */,
+				F1E1817C27BF45DB0059E322 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
