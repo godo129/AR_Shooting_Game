@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController storyboardIdentifier="ARView" id="BV1-FR-VrT" customClass="ViewController" customModule="AR_Zombie_Game" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ARView" id="BV1-FR-VrT" customClass="ARViewController" customModule="AR_Zombie_Game" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U0K-SW-4ec">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -79,6 +79,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="goG-Ru-rZt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="551" y="-664"/>
+        </scene>
+        <!--Leader Board View Controller-->
+        <scene sceneID="1XF-3r-VVJ">
+            <objects>
+                <viewController storyboardIdentifier="LeaderBoardView" id="Z6a-hV-I7C" customClass="LeaderBoardViewController" customModule="AR_Zombie_Game" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sOE-dL-5g8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="eHf-V1-ki1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sOU-We-88n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1260.8695652173915" y="-664.28571428571422"/>
         </scene>
     </scenes>
     <resources>
