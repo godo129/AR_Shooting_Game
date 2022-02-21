@@ -21,6 +21,9 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func LeaderBoardButtonTapped(_ sender: Any) {
+        
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LeaderBoardView")
+        present(vc!, animated: true, completion: nil)
     }
     
 }
