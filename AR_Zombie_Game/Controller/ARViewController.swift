@@ -27,6 +27,44 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the scene to the view
         sceneView.scene = scene
+        
+        addGun()
+        addReloadButton()
+    }
+    
+
+    private func addGun() {
+
+        let gun = SCNScene(named: "art.scnassets/gun.dae")!
+        guard let gunNode = gun.rootNode.childNode(withName: "Gun", recursively: true) else { return }
+        
+        self.sceneView.scene.rootNode.addChildNode(gunNode)
+    }
+    
+    private func addReloadButton() {
+        let reloadButton = UIButton()
+        reloadButton.titleLabel?.text = "Reload"
+        reloadButton.titleLabel?.textColor = .orange
+        reloadButton.backgroundColor = .gray
+        reloadButton.addTarget(self, action: #selector(reloadButtonTapped), for: .touchUpInside)
+        reloadButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        
+        self.sceneView.addSubview(reloadButton)
+    }
+    
+    @objc private func reloadButtonTapped() {
+        
+        guard let gunNode = self.sceneView.scene.rootNode.childNode(withName: "Gun", recursively: true) else {return}
+        
+        reloadGun(node: gunNode)
+    }
+    
+    
+    private func reloadGun(node: SCNNode) {
+        
+        let action = SCNAction.rotate(by: .pi*2, around: SCNVector3(1, 0, 0), duration: 0.5)
+        node.runAction(action)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
