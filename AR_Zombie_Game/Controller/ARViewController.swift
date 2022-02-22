@@ -42,12 +42,10 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     }
     
     private func addReloadButton() {
-        let reloadButton = UIButton()
-        reloadButton.titleLabel?.text = "Reload"
-        reloadButton.titleLabel?.textColor = .orange
-        reloadButton.backgroundColor = .gray
+        let reloadButton = ReloadButton()
+        reloadButton.awakeFromNib()
         reloadButton.addTarget(self, action: #selector(reloadButtonTapped), for: .touchUpInside)
-        reloadButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        reloadButton.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
         
         self.sceneView.addSubview(reloadButton)
     }
