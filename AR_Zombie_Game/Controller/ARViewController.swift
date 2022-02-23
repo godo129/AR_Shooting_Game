@@ -30,6 +30,50 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         
         addGun()
         addReloadButton()
+        gunShooting()
+    }
+    
+    
+    
+    private func gunShooting() {
+        let tagGesture = UITapGestureRecognizer(target: self, action: #selector(shoot))
+        self.sceneView.addGestureRecognizer(tagGesture)
+    }
+    
+    @objc private func shoot(recognizer: UITapGestureRecognizer) {
+        
+        let bulletsNode = Bullet()
+        
+        let (direction, position) = self.getUserVector()
+        bulletsNode.position = position // SceneKit/AR coordinates are in meters
+        let bulletDirection = direction
+        
+        let impulseVector = SCNVector3(
+            x: bulletDirection.x * Float(20),
+            y: bulletDirection.y * Float(20),
+            z: bulletDirection.z * Float(20)
+        )
+        
+        bulletsNode.physicsBody?.applyForce(impulseVector, asImpulse: true)
+        sceneView.scene.rootNode.addChildNode(bulletsNode)
+        
+        //3 seconds after shooting the bullet, remove the bullet node
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
+            // remove node
+            bulletsNode.removeFromParentNode()
+        })
+        
+    }
+    
+    private func getUserVector() -> (SCNVector3, SCNVector3) { // (direction, position)
+        if let frame = self.sceneView.session.currentFrame {
+            let mat = SCNMatrix4(frame.camera.transform) // 4x4 transform matrix describing camera in world space
+            let dir = SCNVector3(-1 * mat.m31, -1 * mat.m32, -1 * mat.m33) // orientation of camera in world space
+            let pos = SCNVector3(mat.m41, mat.m42, mat.m43) // location of camera in world space
+            
+            return (dir, pos)
+        }
+        return (SCNVector3Zero, SCNVector3Zero)
     }
     
 
