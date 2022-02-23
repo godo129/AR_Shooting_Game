@@ -10,6 +10,7 @@
 		F183D42927C4A1B500330E13 /* GunModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183D42827C4A1B500330E13 /* GunModel.swift */; };
 		F183D42B27C4A34C00330E13 /* BulletsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183D42A27C4A34C00330E13 /* BulletsLabel.swift */; };
 		F183D42D27C4A3FC00330E13 /* ReloadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183D42C27C4A3FC00330E13 /* ReloadButton.swift */; };
+		F183D42F27C6200000330E13 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183D42E27C6200000330E13 /* Bullet.swift */; };
 		F1E1816927BF459F0059E322 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1816827BF459F0059E322 /* AppDelegate.swift */; };
 		F1E1816B27BF459F0059E322 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = F1E1816A27BF459F0059E322 /* art.scnassets */; };
 		F1E1816D27BF459F0059E322 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1816C27BF459F0059E322 /* ARViewController.swift */; };
@@ -27,6 +28,7 @@
 		F183D42827C4A1B500330E13 /* GunModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GunModel.swift; sourceTree = "<group>"; };
 		F183D42A27C4A34C00330E13 /* BulletsLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletsLabel.swift; sourceTree = "<group>"; };
 		F183D42C27C4A3FC00330E13 /* ReloadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadButton.swift; sourceTree = "<group>"; };
+		F183D42E27C6200000330E13 /* Bullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
 		F1E1816527BF459F0059E322 /* AR_Zombie_Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AR_Zombie_Game.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1E1816827BF459F0059E322 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1E1816A27BF459F0059E322 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				F183D42827C4A1B500330E13 /* GunModel.swift */,
 				F183D42A27C4A34C00330E13 /* BulletsLabel.swift */,
 				F183D42C27C4A3FC00330E13 /* ReloadButton.swift */,
+				F183D42E27C6200000330E13 /* Bullet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				F1E1818C27C35E790059E322 /* TableViewCell.swift in Sources */,
 				F1E1818327BF4AFE0059E322 /* HomeViewController.swift in Sources */,
 				F183D42B27C4A34C00330E13 /* BulletsLabel.swift in Sources */,
+				F183D42F27C6200000330E13 /* Bullet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
