@@ -13,6 +13,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
+    var timer = Timer()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,6 +32,51 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         addGun()
         addReloadButton()
         gunShooting()
+        
+        self.timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: { _ in
+            self.addZombie()
+        })
+        
+    }
+    
+    private func addZombie() {
+        
+
+        
+        let box = SCNBox(width: 0.02, height: 0.02, length: 0.02, chamferRadius: 0)
+        let RGBValue = getRandomRGBValue()
+        box.firstMaterial?.diffuse.contents = UIColor(red: RGBValue.0, green: RGBValue.1, blue: RGBValue.2, alpha: 1)
+        let boxNode = SCNNode(geometry: box)
+        let position = getRandomPosition()
+        boxNode.position = position
+        
+//        let zombieNode = Zombie()
+//        boxNode.addChildNode(zombieNode)
+//        zomebieNode.position.x = position.x
+//        zomebieNode?.position.y = position.y
+//        zomebieNode?.position.z = position.z
+
+        self.sceneView.scene.rootNode.addChildNode(boxNode)
+        
+    }
+    
+    private func getRandomRGBValue() -> (CGFloat,CGFloat,CGFloat) {
+        
+        let R = CGFloat(Double.random(in: 0..<1))
+        let G = CGFloat(Double.random(in: 0..<1))
+        let B = CGFloat(Double.random(in: 0..<1))
+        
+        return (R,G,B)
+        
+    }
+    
+    private func getRandomPosition() -> SCNVector3 {
+        
+        let x = Float(Double.random(in: -0.5..<0.5))
+        let y = Float(0)
+        let z = Float(Double.random(in: -0.5..<0.5))
+        
+        return SCNVector3Make(x, y, z)
     }
     
     
