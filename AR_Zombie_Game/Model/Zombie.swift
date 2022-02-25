@@ -18,7 +18,7 @@ class Zombie: SCNNode {
         self.physicsBody = SCNPhysicsBody(type: .dynamic, shape: shape)
         self.physicsBody?.isAffectedByGravity = false
         self.physicsBody?.categoryBitMask = CollisionCategory.zombie.rawValue
-        self.physicsBody?.contactTestBitMask = CollisionCategory.count.rawValue
+        self.physicsBody?.contactTestBitMask = CollisionCategory.bullet.rawValue
         self.physicsBody?.collisionBitMask = CollisionCategory.bullet.rawValue
         
         guard let zombieScene = SCNScene(named: "art.scnassets/zombie.dae") else {return}

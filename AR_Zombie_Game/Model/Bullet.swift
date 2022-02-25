@@ -19,13 +19,13 @@ struct CollisionCategory: OptionSet {
 class Bullet: SCNNode {
     override init () {
         super.init()
-        let sphere = SCNSphere(radius: 0.025)
+        let sphere = SCNSphere(radius: 0.05)
         self.geometry = sphere
         let shape = SCNPhysicsShape(geometry: sphere, options: nil)
         self.physicsBody = SCNPhysicsBody(type: .dynamic, shape: shape)
         self.physicsBody?.isAffectedByGravity = false
         self.physicsBody?.categoryBitMask = CollisionCategory.bullet.rawValue // 충돌 카테고리 부여
-        self.physicsBody?.contactTestBitMask = CollisionCategory.count.rawValue // 충돌을 몇번 할 것인지
+        self.physicsBody?.contactTestBitMask = CollisionCategory.zombie.rawValue // 
         self.physicsBody?.collisionBitMask = CollisionCategory.zombie.rawValue // 충돌할 카테고리
         
         self.geometry?.materials.first?.diffuse.contents = UIColor.purple
