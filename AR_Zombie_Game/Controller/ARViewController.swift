@@ -14,6 +14,9 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var sceneView: ARSCNView!
     
     var timer = Timer()
+    
+    private var point = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,10 +27,13 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = true
         
         // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/Dungeon.scn")!
+//        let scene = SCNScene(named: "art.scnassets/Dungeon.scn")!
+        let scene = SCNScene()
         
         // Set the scene to the view
         sceneView.scene = scene
+        
+        self.sceneView.scene.physicsWorld.contactDelegate = self
         
         addGun()
         addReloadButton()
@@ -43,12 +49,20 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         
 
         
-        let box = SCNBox(width: 0.02, height: 0.02, length: 0.02, chamferRadius: 0)
+        let box = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
         let RGBValue = getRandomRGBValue()
         box.firstMaterial?.diffuse.contents = UIColor(red: RGBValue.0, green: RGBValue.1, blue: RGBValue.2, alpha: 1)
         let boxNode = SCNNode(geometry: box)
         let position = getRandomPosition()
         boxNode.position = position
+        
+        let shape = SCNPhysicsShape(geometry: box, options: nil)
+        boxNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: shape)
+        boxNode.physicsBody?.isAffectedByGravity = false
+        boxNode.physicsBody?.categoryBitMask = CollisionCategory.zombie.rawValue
+        boxNode.physicsBody?.collisionBitMask = CollisionCategory.bullet.rawValue
+        boxNode.physicsBody?.contactTestBitMask = CollisionCategory.bullet.rawValue
+        
         
 //        let zombieNode = Zombie()
 //        boxNode.addChildNode(zombieNode)
@@ -89,20 +103,20 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     @objc private func shoot(recognizer: UITapGestureRecognizer) {
         
         let bulletsNode = Bullet()
-        
         let (direction, position) = self.getUserVector()
         bulletsNode.position = position // SceneKit/AR coordinates are in meters
         let bulletDirection = direction
-        
         let impulseVector = SCNVector3(
             x: bulletDirection.x * Float(20),
             y: bulletDirection.y * Float(20),
             z: bulletDirection.z * Float(20)
         )
-        
+
+//        let forceVector = SCNVector3(bulletsNode.worldFront.x * 2, bulletsNode.worldFront.y * 2, bulletsNode.worldFront.z * 2)
+
         bulletsNode.physicsBody?.applyForce(impulseVector, asImpulse: true)
         sceneView.scene.rootNode.addChildNode(bulletsNode)
-        
+
         //3 seconds after shooting the bullet, remove the bullet node
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
             // remove node
@@ -173,4 +187,17 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     }
 
   
+}
+
+extension ARViewController: SCNPhysicsContactDelegate {
+    func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
+        if contact.nodeA.physicsBody?.categoryBitMask == CollisionCategory.zombie.rawValue || contact.nodeB.physicsBody?.categoryBitMask == CollisionCategory.zombie.rawValue {
+            point += 1
+            print(point)
+            
+            contact.nodeA.removeFromParentNode()
+            contact.nodeB.removeFromParentNode()
+        }
+    }
+
 }
