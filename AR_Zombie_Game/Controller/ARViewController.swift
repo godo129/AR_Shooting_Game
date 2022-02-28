@@ -15,6 +15,10 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     var timer = Timer()
     
+    var gamePointLabel = GamePointLabel()
+    
+    private let menuView = GameMenuView()
+    
     private var point = 0
     
     override func viewDidLoad() {
@@ -38,6 +42,12 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         addGun()
         addReloadButton()
         gunShooting()
+        
+        self.sceneView.addSubview(gamePointLabel)
+        gamePointLabel.frame = CGRect(x: self.sceneView.bounds.width-200, y: 0, width: 200, height: 50)
+        gamePointLabel.text = "\(point) 점"
+        
+        self.menuView.frame = self.sceneView.bounds
         
         self.timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: { _ in
             self.addZombie()
@@ -193,10 +203,22 @@ extension ARViewController: SCNPhysicsContactDelegate {
     func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
         if contact.nodeA.physicsBody?.categoryBitMask == CollisionCategory.zombie.rawValue || contact.nodeB.physicsBody?.categoryBitMask == CollisionCategory.zombie.rawValue {
             point += 1
-            print(point)
             
-            contact.nodeA.removeFromParentNode()
-            contact.nodeB.removeFromParentNode()
+            
+            
+            DispatchQueue.main.async {
+                
+                if self.point > 3 {
+                    self.menuView.frame = self.sceneView.bounds
+                    self.timer.invalidate()
+                }
+                
+                self.gamePointLabel.text = "\(self.point) 점"
+                
+                contact.nodeA.removeFromParentNode()
+                contact.nodeB.removeFromParentNode()
+            }
+            
         }
     }
 
