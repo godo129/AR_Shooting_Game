@@ -47,8 +47,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         gamePointLabel.frame = CGRect(x: self.sceneView.bounds.width-200, y: 0, width: 200, height: 50)
         gamePointLabel.text = "\(point) 점"
         
-        self.menuView.frame = self.sceneView.bounds
-        
         self.timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: { _ in
             self.addZombie()
         })
@@ -210,7 +208,10 @@ extension ARViewController: SCNPhysicsContactDelegate {
                 
                 if self.point > 3 {
                     self.menuView.frame = self.sceneView.bounds
+                    self.sceneView.addSubview(self.menuView)
+                    
                     self.timer.invalidate()
+                    
                 }
                 
                 self.gamePointLabel.text = "\(self.point) 점"
