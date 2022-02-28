@@ -12,6 +12,9 @@
 		F183D42D27C4A3FC00330E13 /* ReloadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183D42C27C4A3FC00330E13 /* ReloadButton.swift */; };
 		F183D42F27C6200000330E13 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183D42E27C6200000330E13 /* Bullet.swift */; };
 		F183D43127C75B9400330E13 /* Zombie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183D43027C75B9400330E13 /* Zombie.swift */; };
+		F1C08EDC27CC8FC900B23D3A /* GamePointLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C08EDB27CC8FC900B23D3A /* GamePointLabel.swift */; };
+		F1C08EE027CC933100B23D3A /* GameMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C08EDF27CC933100B23D3A /* GameMenuButton.swift */; };
+		F1C08EE227CCA37A00B23D3A /* GameMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C08EE127CCA37A00B23D3A /* GameMenuView.swift */; };
 		F1E1816927BF459F0059E322 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1816827BF459F0059E322 /* AppDelegate.swift */; };
 		F1E1816B27BF459F0059E322 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = F1E1816A27BF459F0059E322 /* art.scnassets */; };
 		F1E1816D27BF459F0059E322 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1816C27BF459F0059E322 /* ARViewController.swift */; };
@@ -31,6 +34,9 @@
 		F183D42C27C4A3FC00330E13 /* ReloadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadButton.swift; sourceTree = "<group>"; };
 		F183D42E27C6200000330E13 /* Bullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
 		F183D43027C75B9400330E13 /* Zombie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zombie.swift; sourceTree = "<group>"; };
+		F1C08EDB27CC8FC900B23D3A /* GamePointLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePointLabel.swift; sourceTree = "<group>"; };
+		F1C08EDF27CC933100B23D3A /* GameMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMenuButton.swift; sourceTree = "<group>"; };
+		F1C08EE127CCA37A00B23D3A /* GameMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMenuView.swift; sourceTree = "<group>"; };
 		F1E1816527BF459F0059E322 /* AR_Zombie_Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AR_Zombie_Game.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1E1816827BF459F0059E322 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1E1816A27BF459F0059E322 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -100,6 +106,7 @@
 				F1E1818227BF4AFE0059E322 /* HomeViewController.swift */,
 				F1E1818827C353A90059E322 /* LeaderBoardViewController.swift */,
 				F1E1818B27C35E790059E322 /* TableViewCell.swift */,
+				F1C08EE127CCA37A00B23D3A /* GameMenuView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -115,6 +122,8 @@
 				F183D42C27C4A3FC00330E13 /* ReloadButton.swift */,
 				F183D42E27C6200000330E13 /* Bullet.swift */,
 				F183D43027C75B9400330E13 /* Zombie.swift */,
+				F1C08EDB27CC8FC900B23D3A /* GamePointLabel.swift */,
+				F1C08EDF27CC933100B23D3A /* GameMenuButton.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -196,13 +205,16 @@
 				F1E1816D27BF459F0059E322 /* ARViewController.swift in Sources */,
 				F1E1816927BF459F0059E322 /* AppDelegate.swift in Sources */,
 				F183D42D27C4A3FC00330E13 /* ReloadButton.swift in Sources */,
+				F1C08EE227CCA37A00B23D3A /* GameMenuView.swift in Sources */,
 				F183D42927C4A1B500330E13 /* GunModel.swift in Sources */,
+				F1C08EDC27CC8FC900B23D3A /* GamePointLabel.swift in Sources */,
 				F1E1818927C353A90059E322 /* LeaderBoardViewController.swift in Sources */,
 				F1E1818C27C35E790059E322 /* TableViewCell.swift in Sources */,
 				F1E1818327BF4AFE0059E322 /* HomeViewController.swift in Sources */,
 				F183D43127C75B9400330E13 /* Zombie.swift in Sources */,
 				F183D42B27C4A34C00330E13 /* BulletsLabel.swift in Sources */,
 				F183D42F27C6200000330E13 /* Bullet.swift in Sources */,
+				F1C08EE027CC933100B23D3A /* GameMenuButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
