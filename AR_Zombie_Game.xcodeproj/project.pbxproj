@@ -15,6 +15,10 @@
 		F1C08EDC27CC8FC900B23D3A /* GamePointLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C08EDB27CC8FC900B23D3A /* GamePointLabel.swift */; };
 		F1C08EE027CC933100B23D3A /* GameMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C08EDF27CC933100B23D3A /* GameMenuButton.swift */; };
 		F1C08EE227CCA37A00B23D3A /* GameMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C08EE127CCA37A00B23D3A /* GameMenuView.swift */; };
+		F1C08EE427CDB87C00B23D3A /* GamePointSaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C08EE327CDB87C00B23D3A /* GamePointSaveView.swift */; };
+		F1C08EE627CDB8F200B23D3A /* NickNameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C08EE527CDB8F200B23D3A /* NickNameTextField.swift */; };
+		F1C08EE827CDBCBF00B23D3A /* GamePointSaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C08EE727CDBCBF00B23D3A /* GamePointSaveButton.swift */; };
+		F1C08EEA27CDC75C00B23D3A /* GamePointManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C08EE927CDC75C00B23D3A /* GamePointManager.swift */; };
 		F1E1816927BF459F0059E322 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1816827BF459F0059E322 /* AppDelegate.swift */; };
 		F1E1816B27BF459F0059E322 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = F1E1816A27BF459F0059E322 /* art.scnassets */; };
 		F1E1816D27BF459F0059E322 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1816C27BF459F0059E322 /* ARViewController.swift */; };
@@ -37,6 +41,10 @@
 		F1C08EDB27CC8FC900B23D3A /* GamePointLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePointLabel.swift; sourceTree = "<group>"; };
 		F1C08EDF27CC933100B23D3A /* GameMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMenuButton.swift; sourceTree = "<group>"; };
 		F1C08EE127CCA37A00B23D3A /* GameMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMenuView.swift; sourceTree = "<group>"; };
+		F1C08EE327CDB87C00B23D3A /* GamePointSaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePointSaveView.swift; sourceTree = "<group>"; };
+		F1C08EE527CDB8F200B23D3A /* NickNameTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameTextField.swift; sourceTree = "<group>"; };
+		F1C08EE727CDBCBF00B23D3A /* GamePointSaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePointSaveButton.swift; sourceTree = "<group>"; };
+		F1C08EE927CDC75C00B23D3A /* GamePointManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePointManager.swift; sourceTree = "<group>"; };
 		F1E1816527BF459F0059E322 /* AR_Zombie_Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AR_Zombie_Game.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1E1816827BF459F0059E322 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1E1816A27BF459F0059E322 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -102,11 +110,12 @@
 		F1E1817E27BF47480059E322 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F1E1816C27BF459F0059E322 /* ARViewController.swift */,
 				F1E1818227BF4AFE0059E322 /* HomeViewController.swift */,
 				F1E1818827C353A90059E322 /* LeaderBoardViewController.swift */,
 				F1E1818B27C35E790059E322 /* TableViewCell.swift */,
+				F1E1816C27BF459F0059E322 /* ARViewController.swift */,
 				F1C08EE127CCA37A00B23D3A /* GameMenuView.swift */,
+				F1C08EE327CDB87C00B23D3A /* GamePointSaveView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -116,6 +125,7 @@
 			children = (
 				F1E1816827BF459F0059E322 /* AppDelegate.swift */,
 				F1E1818427C34A190059E322 /* GamePointData.swift */,
+				F1C08EE927CDC75C00B23D3A /* GamePointManager.swift */,
 				F1E1818627C34DBE0059E322 /* DateToString.swift */,
 				F183D42827C4A1B500330E13 /* GunModel.swift */,
 				F183D42A27C4A34C00330E13 /* BulletsLabel.swift */,
@@ -124,6 +134,8 @@
 				F183D43027C75B9400330E13 /* Zombie.swift */,
 				F1C08EDB27CC8FC900B23D3A /* GamePointLabel.swift */,
 				F1C08EDF27CC933100B23D3A /* GameMenuButton.swift */,
+				F1C08EE527CDB8F200B23D3A /* NickNameTextField.swift */,
+				F1C08EE727CDBCBF00B23D3A /* GamePointSaveButton.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -200,10 +212,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1C08EEA27CDC75C00B23D3A /* GamePointManager.swift in Sources */,
+				F1C08EE427CDB87C00B23D3A /* GamePointSaveView.swift in Sources */,
 				F1E1818527C34A190059E322 /* GamePointData.swift in Sources */,
 				F1E1818727C34DBE0059E322 /* DateToString.swift in Sources */,
 				F1E1816D27BF459F0059E322 /* ARViewController.swift in Sources */,
 				F1E1816927BF459F0059E322 /* AppDelegate.swift in Sources */,
+				F1C08EE827CDBCBF00B23D3A /* GamePointSaveButton.swift in Sources */,
+				F1C08EE627CDB8F200B23D3A /* NickNameTextField.swift in Sources */,
 				F183D42D27C4A3FC00330E13 /* ReloadButton.swift in Sources */,
 				F1C08EE227CCA37A00B23D3A /* GameMenuView.swift in Sources */,
 				F183D42927C4A1B500330E13 /* GunModel.swift in Sources */,

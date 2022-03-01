@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct GamePoint {
+struct GamePointDetail {
     
     var nickName : String
-    var Date : String
-    var Point : DateToString
+    var Date : DateToString
+    var Point : Int
     
 }
