@@ -33,6 +33,8 @@ class TableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        self.layer.borderWidth = 2
+        self.layer.borderColor = UIColor.gray.cgColor
         self.contentView.addSubview(descripString)
 
     }
