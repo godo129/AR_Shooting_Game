@@ -18,6 +18,8 @@ class LeaderBoardViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        pointListSort()
+        
         tableView.register(TableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
@@ -30,7 +32,7 @@ class LeaderBoardViewController: UIViewController {
 extension LeaderBoardViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return storedPointList.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -40,7 +42,9 @@ extension LeaderBoardViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
         
-        cell.descripString.text = "nickName, point, date"
+        let dateInfo = storedPointList[indexPath.row].Date
+        
+        cell.descripString.text = "\(indexPath.row+1)위 이름 : \(storedPointList[indexPath.row].nickName) 점수 : \(storedPointList[indexPath.row].Point) 점 날짜 : \(dateInfo.Year)-\(dateInfo.Month)-\(dateInfo.Date)"
         return cell
     }
     
