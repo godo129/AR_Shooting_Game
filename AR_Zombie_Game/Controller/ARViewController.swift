@@ -13,13 +13,16 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     
-    var timer = Timer()
+    private var timer = Timer()
     
-    var gamePointLabel = GamePointLabel()
+    private var gamePointLabel = GamePointLabel()
     
     private let menuView = GameMenuView()
     
-    private var point = 0
+    var point = 0
+    
+    private var targetList: [SCNNode] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +74,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         boxNode.physicsBody?.collisionBitMask = CollisionCategory.bullet.rawValue
         boxNode.physicsBody?.contactTestBitMask = CollisionCategory.bullet.rawValue
         
+        targetList.append(boxNode)
         
 //        let zombieNode = Zombie()
 //        boxNode.addChildNode(zombieNode)
@@ -80,6 +84,13 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
         self.sceneView.scene.rootNode.addChildNode(boxNode)
         
+    }
+    
+    private func removeAllTarget() {
+        
+        for target in targetList {
+            target.removeFromParentNode()
+        }
     }
     
     private func getRandomRGBValue() -> (CGFloat,CGFloat,CGFloat) {
@@ -155,7 +166,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     private func addReloadButton() {
         let reloadButton = ReloadButton()
-        reloadButton.awakeFromNib()
         reloadButton.addTarget(self, action: #selector(reloadButtonTapped), for: .touchUpInside)
         reloadButton.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
         
@@ -206,11 +216,13 @@ extension ARViewController: SCNPhysicsContactDelegate {
             
             DispatchQueue.main.async {
                 
-                if self.point > 3 {
+                if self.targetList.count > 3 {
                     self.menuView.frame = self.sceneView.bounds
                     self.sceneView.addSubview(self.menuView)
-                    
+                    self.removeAllTarget()
                     self.timer.invalidate()
+                    
+                    self.menuView.saveView.gamePointLabel.text = "\(self.point)"
                     
                 }
                 
