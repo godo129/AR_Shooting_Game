@@ -23,9 +23,10 @@ class GamePointSaveView: UIView {
         saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         getDateData()
         
-        self.addSubview(nickNameField)
-        self.addSubview(gamePointLabel)
-        self.addSubview(saveButton)
+        self.addSubview(self.nickNameField)
+        self.addSubview(self.gamePointLabel)
+        self.addSubview(self.saveButton)
+        
 
     }
     
@@ -46,12 +47,28 @@ class GamePointSaveView: UIView {
     
     @objc private func saveButtonTapped() {
         
+        saveData()
+        exitGamePointSaveView()
+        
+    }
+    
+    private func saveData() {
+        
         guard let nickName = nickNameField.text else {return}
         
         let infomation = GamePointDetail(nickName: nickName, Date: today, Point: Int(gamePointLabel.text!)!)
         
         storedPointList.append(infomation)
     }
+    
+    private func exitGamePointSaveView() {
+        // 세이브 뷰 없앰
+        self.removeFromSuperview()
+        
+        NotificationCenter.default.post(name: gamePointSaveViewExit, object: nil)
+    }
+    
+    
     
     override func layoutSubviews() {
         super.layoutSubviews()
