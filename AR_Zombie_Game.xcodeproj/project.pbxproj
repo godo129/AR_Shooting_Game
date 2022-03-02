@@ -19,6 +19,9 @@
 		F1C08EE627CDB8F200B23D3A /* NickNameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C08EE527CDB8F200B23D3A /* NickNameTextField.swift */; };
 		F1C08EE827CDBCBF00B23D3A /* GamePointSaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C08EE727CDBCBF00B23D3A /* GamePointSaveButton.swift */; };
 		F1C08EEA27CDC75C00B23D3A /* GamePointManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C08EE927CDC75C00B23D3A /* GamePointManager.swift */; };
+		F1C08EEC27CF239500B23D3A /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C08EEB27CF239500B23D3A /* Notifications.swift */; };
+		F1C08EEE27CF3FF100B23D3A /* Megazine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C08EED27CF3FF100B23D3A /* Megazine.swift */; };
+		F1C08EF027CF405200B23D3A /* BulletImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C08EEF27CF405200B23D3A /* BulletImg.swift */; };
 		F1E1816927BF459F0059E322 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1816827BF459F0059E322 /* AppDelegate.swift */; };
 		F1E1816B27BF459F0059E322 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = F1E1816A27BF459F0059E322 /* art.scnassets */; };
 		F1E1816D27BF459F0059E322 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1816C27BF459F0059E322 /* ARViewController.swift */; };
@@ -45,6 +48,9 @@
 		F1C08EE527CDB8F200B23D3A /* NickNameTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameTextField.swift; sourceTree = "<group>"; };
 		F1C08EE727CDBCBF00B23D3A /* GamePointSaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePointSaveButton.swift; sourceTree = "<group>"; };
 		F1C08EE927CDC75C00B23D3A /* GamePointManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePointManager.swift; sourceTree = "<group>"; };
+		F1C08EEB27CF239500B23D3A /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		F1C08EED27CF3FF100B23D3A /* Megazine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Megazine.swift; sourceTree = "<group>"; };
+		F1C08EEF27CF405200B23D3A /* BulletImg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletImg.swift; sourceTree = "<group>"; };
 		F1E1816527BF459F0059E322 /* AR_Zombie_Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AR_Zombie_Game.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1E1816827BF459F0059E322 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1E1816A27BF459F0059E322 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -136,6 +142,9 @@
 				F1C08EDF27CC933100B23D3A /* GameMenuButton.swift */,
 				F1C08EE527CDB8F200B23D3A /* NickNameTextField.swift */,
 				F1C08EE727CDBCBF00B23D3A /* GamePointSaveButton.swift */,
+				F1C08EEB27CF239500B23D3A /* Notifications.swift */,
+				F1C08EED27CF3FF100B23D3A /* Megazine.swift */,
+				F1C08EEF27CF405200B23D3A /* BulletImg.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -212,6 +221,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1C08EEC27CF239500B23D3A /* Notifications.swift in Sources */,
+				F1C08EF027CF405200B23D3A /* BulletImg.swift in Sources */,
 				F1C08EEA27CDC75C00B23D3A /* GamePointManager.swift in Sources */,
 				F1C08EE427CDB87C00B23D3A /* GamePointSaveView.swift in Sources */,
 				F1E1818527C34A190059E322 /* GamePointData.swift in Sources */,
@@ -220,6 +231,7 @@
 				F1E1816927BF459F0059E322 /* AppDelegate.swift in Sources */,
 				F1C08EE827CDBCBF00B23D3A /* GamePointSaveButton.swift in Sources */,
 				F1C08EE627CDB8F200B23D3A /* NickNameTextField.swift in Sources */,
+				F1C08EEE27CF3FF100B23D3A /* Megazine.swift in Sources */,
 				F183D42D27C4A3FC00330E13 /* ReloadButton.swift in Sources */,
 				F1C08EE227CCA37A00B23D3A /* GameMenuView.swift in Sources */,
 				F183D42927C4A1B500330E13 /* GunModel.swift in Sources */,
