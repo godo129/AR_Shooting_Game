@@ -22,7 +22,18 @@ class GameMenuView: UIView {
         
         
         savePointButton.addTarget(self, action: #selector(savePointButtonTapped), for: .touchUpInside)
+        restartButton.addTarget(self, action: #selector(restartButtonTapped), for: .touchUpInside)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(removeView), name: gamePointSaveViewExit, object: nil)
+        
+    }
+    
+    private func exit() {
+        self.removeFromSuperview()
+    }
+    
+    @objc private func removeView() {
+        exit()
     }
     
     private func 서브뷰초기화() {
@@ -37,6 +48,11 @@ class GameMenuView: UIView {
     
     @objc private func savePointButtonTapped() {
         addSaveView()
+    }
+    
+    @objc private func restartButtonTapped() {
+        exit()
+        NotificationCenter.default.post(name: gameMenuViewExit, object: nil)
     }
     
     required init?(coder: NSCoder) {
