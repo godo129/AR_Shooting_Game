@@ -17,9 +17,9 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     private var gamePointLabel = GamePointLabel()
     
-    private let menuView = GameMenuView()
+//    private let menuView = GameMenuView()
     
-    var point = 0
+    private var point = 0
     
     private var targetList: [SCNNode] = []
     
@@ -40,25 +40,61 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         // Set the scene to the view
         sceneView.scene = scene
         
+        let magazine = Megazine(frame: CGRect(x: 50, y: 100, width: 200, height: 100), amount: 10, curAmount: 5)
+        self.sceneView.addSubview(magazine)
+        
         self.sceneView.scene.physicsWorld.contactDelegate = self
         
         addGun()
-        addReloadButton()
-        gunShooting()
         
-        self.sceneView.addSubview(gamePointLabel)
-        gamePointLabel.frame = CGRect(x: self.sceneView.bounds.width-200, y: 0, width: 200, height: 50)
-        gamePointLabel.text = "\(point) 점"
-        
-        self.timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: { _ in
-            self.addZombie()
-        })
+        NotificationCenter.default.addObserver(self, selector: #selector(saveComplete), name: gamePointSaveViewExit, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reset), name: gameMenuViewExit, object: nil)
+        gamePlay()
         
     }
     
-    private func addZombie() {
+    private func gamePlay() {
         
-
+        addReloadButton()
+        gunShooting()
+        addGamePointLabel()
+        startMakeTarget()
+        
+    }
+    
+    private func addGamePointLabel() {
+        self.sceneView.addSubview(gamePointLabel)
+        gamePointLabel.frame = CGRect(x: self.sceneView.bounds.width-200, y: 0, width: 200, height: 50)
+        gamePointLabel.text = "\(point) 점"
+    }
+    
+    private func startMakeTarget() {
+        self.timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: { _ in
+            self.addZombie()
+        })
+    }
+    
+    @objc private func reset() {
+        point = 0
+        gamePlay()
+    }
+    
+    @objc private func saveComplete() {
+        
+        let alert = UIAlertController(title: "저장 완료", message: "다음에 할 행동을 선택해 주세요", preferredStyle: .alert)
+        let restartAlertAction = UIAlertAction(title: "게임 재시작", style: .default) { _ in
+            self.reset()
+        }
+        let closeAlertAction = UIAlertAction(title: "게임 종료", style: .default) { _ in
+            self.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(restartAlertAction)
+        alert.addAction(closeAlertAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func addZombie() {
         
         let box = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
         let RGBValue = getRandomRGBValue()
@@ -216,13 +252,13 @@ extension ARViewController: SCNPhysicsContactDelegate {
             
             DispatchQueue.main.async {
                 
-                if self.targetList.count > 3 {
-                    self.menuView.frame = self.sceneView.bounds
-                    self.sceneView.addSubview(self.menuView)
+                if self.point ==  3 {
+                    let menuView = GameMenuView()
+                    menuView.frame = self.sceneView.bounds
+                    self.sceneView.addSubview(menuView)
                     self.removeAllTarget()
                     self.timer.invalidate()
-                    
-                    self.menuView.saveView.gamePointLabel.text = "\(self.point)"
+                    menuView.saveView.gamePointLabel.text = "\(self.point)"
                     
                 }
                 
