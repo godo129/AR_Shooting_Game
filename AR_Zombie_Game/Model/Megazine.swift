@@ -9,30 +9,35 @@ import UIKit
 
 class Megazine: UIButton {
     
+    var amount = player.AmountOfMagazine
+    var curAmount = player.curAmountOfBullet
     
+    var bulletList: [BulletImg] = []
 
     
-    init(frame: CGRect, amount: Int, curAmount: Int) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.black.cgColor
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 15
         
-        makeImage(amount: amount, curAmount: curAmount)
+        makeImage()
     }
     
-   
     
-    private func makeImage(amount: Int, curAmount: Int) {
+    func makeImage() {
         
-        let bulletWidthFrame = self.frame.width/CGFloat(amount)
+        removeBulletViews()
+
+        let bulletWidthFrame = self.frame.width/CGFloat(self.amount)
         
-        for i in 0..<curAmount {
+        for i in 0..<self.curAmount {
             
             let bulletFrame = CGRect(x: bulletWidthFrame * CGFloat(i), y: 0, width: bulletWidthFrame, height: self.frame.height)
             let bullet = BulletImg(frame: bulletFrame,color: UIColor.cyan)
             self.addSubview(bullet)
+            bulletList.append(bullet)
 
         }
         
