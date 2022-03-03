@@ -36,7 +36,7 @@ extension LeaderBoardViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "LeaderBoard"
+        return "Ranking"
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -44,7 +44,7 @@ extension LeaderBoardViewController: UITableViewDelegate, UITableViewDataSource 
         
         let dateInfo = storedPointList[indexPath.row].Date
         
-        cell.descripString.text = "\(indexPath.row+1)위 이름 : \(storedPointList[indexPath.row].nickName) 점수 : \(storedPointList[indexPath.row].Point) 점 날짜 : \(dateInfo.Year)-\(dateInfo.Month)-\(dateInfo.Date)"
+        cell.descripString.text = "\(indexPath.row+1)위 \(storedPointList[indexPath.row].nickName), 점수 : \(storedPointList[indexPath.row].Point)점, 날짜 : \(dateInfo.Year)-\(dateInfo.Month)-\(dateInfo.Date)"
         return cell
     }
     
