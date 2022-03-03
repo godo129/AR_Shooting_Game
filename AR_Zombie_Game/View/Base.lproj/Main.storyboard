@@ -65,6 +65,10 @@
                                     <action selector="LeaderBoardButtonTapped:" destination="oVe-EE-fLH" eventType="touchUpInside" id="f2b-gG-fWJ"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="target" translatesAutoresizingMaskIntoConstraints="NO" id="DfR-6c-Q0d">
+                                <rect key="frame" x="92" y="97" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ez3-GX-4A8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -97,6 +101,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="target" width="225" height="225"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
