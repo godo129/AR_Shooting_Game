@@ -17,6 +17,10 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     private var gamePointLabel = GamePointLabel()
     
+    let megazine = Megazine()
+    
+    var bulletLabel = BulletLabel()
+    
 //    private let menuView = GameMenuView()
     
     private var point = 0
@@ -30,9 +34,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         // Set the view's delegate
         sceneView.delegate = self
         
-        // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
-        
         // Create a new scene
 //        let scene = SCNScene(named: "art.scnassets/Dungeon.scn")!
         let scene = SCNScene()
@@ -40,31 +41,53 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         // Set the scene to the view
         sceneView.scene = scene
         
-        let magazine = Megazine(frame: CGRect(x: 50, y: 100, width: 200, height: 100), amount: 10, curAmount: 5)
-        self.sceneView.addSubview(magazine)
         
         self.sceneView.scene.physicsWorld.contactDelegate = self
         
+        self.sceneView.addSubview(megazine)
+        self.sceneView.addSubview(bulletLabel)
+        
         addGun()
+        gamePlay()
         
         NotificationCenter.default.addObserver(self, selector: #selector(saveComplete), name: gamePointSaveViewExit, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(reset), name: gameMenuViewExit, object: nil)
-        gamePlay()
+        NotificationCenter.default.addObserver(self, selector: #selector(gamePlay), name: gameMenuViewExit, object: nil)
+        
         
     }
     
-    private func gamePlay() {
+    private func layoutMagazineView() {
+     
+        updateMegazine()
         
+        megazine.frame = CGRect(x: 20, y: self.view.frame.height-130, width: 100, height: 50)
+        bulletLabel.frame = CGRect(x: megazine.frame.origin.x,
+                             y: megazine.frame.origin.y+megazine.frame.height,
+                             width: megazine.frame.width,
+                             height: megazine.frame.height)
+        
+        
+    }
+    
+    private func bulletLabelUpdate() {
+        bulletLabel.text = "\(player.curAmountOfBullet) / \(player.AmountOfMagazine)"
+    }
+    
+    @objc private func gamePlay() {
+        layoutMagazineView()
+        reset()
         addReloadButton()
         gunShooting()
         addGamePointLabel()
         startMakeTarget()
+        updateMegazine()
+        
         
     }
     
     private func addGamePointLabel() {
         self.sceneView.addSubview(gamePointLabel)
-        gamePointLabel.frame = CGRect(x: self.sceneView.bounds.width-200, y: 0, width: 200, height: 50)
+        gamePointLabel.frame = CGRect(x: self.sceneView.bounds.width-150, y: 0, width: 150, height: 50)
         gamePointLabel.text = "\(point) 점"
     }
     
@@ -74,16 +97,16 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         })
     }
     
-    @objc private func reset() {
+    private func reset() {
         point = 0
-        gamePlay()
+        player.curAmountOfBullet = 10
     }
     
     @objc private func saveComplete() {
         
         let alert = UIAlertController(title: "저장 완료", message: "다음에 할 행동을 선택해 주세요", preferredStyle: .alert)
         let restartAlertAction = UIAlertAction(title: "게임 재시작", style: .default) { _ in
-            self.reset()
+            self.gamePlay()
         }
         let closeAlertAction = UIAlertAction(title: "게임 종료", style: .default) { _ in
             self.dismiss(animated: true, completion: nil)
@@ -155,29 +178,44 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         self.sceneView.addGestureRecognizer(tagGesture)
     }
     
+    private func updateMegazine() {
+        megazine.amount = player.AmountOfMagazine
+        megazine.curAmount = player.curAmountOfBullet
+        megazine.makeImage()
+        bulletLabelUpdate()
+        
+    }
+    
     @objc private func shoot(recognizer: UITapGestureRecognizer) {
         
-        let bulletsNode = Bullet()
-        let (direction, position) = self.getUserVector()
-        bulletsNode.position = position // SceneKit/AR coordinates are in meters
-        let bulletDirection = direction
-        let impulseVector = SCNVector3(
-            x: bulletDirection.x * Float(20),
-            y: bulletDirection.y * Float(20),
-            z: bulletDirection.z * Float(20)
-        )
-
-//        let forceVector = SCNVector3(bulletsNode.worldFront.x * 2, bulletsNode.worldFront.y * 2, bulletsNode.worldFront.z * 2)
-
-        bulletsNode.physicsBody?.applyForce(impulseVector, asImpulse: true)
-        sceneView.scene.rootNode.addChildNode(bulletsNode)
-
-        //3 seconds after shooting the bullet, remove the bullet node
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
-            // remove node
-            bulletsNode.removeFromParentNode()
-        })
         
+        if player.curAmountOfBullet > 0 {
+            let bulletsNode = Bullet()
+            let (direction, position) = self.getUserVector()
+            bulletsNode.position = position // SceneKit/AR coordinates are in meters
+            let bulletDirection = direction
+            let impulseVector = SCNVector3(
+                x: bulletDirection.x * Float(20),
+                y: bulletDirection.y * Float(20),
+                z: bulletDirection.z * Float(20)
+            )
+
+    //        let forceVector = SCNVector3(bulletsNode.worldFront.x * 2, bulletsNode.worldFront.y * 2, bulletsNode.worldFront.z * 2)
+
+            bulletsNode.physicsBody?.applyForce(impulseVector, asImpulse: true)
+            sceneView.scene.rootNode.addChildNode(bulletsNode)
+
+            //3 seconds after shooting the bullet, remove the bullet node
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
+                // remove node
+                bulletsNode.removeFromParentNode()
+            })
+            
+            player.usedBullet()
+            updateMegazine()
+            
+        }
+
     }
     
     private func getUserVector() -> (SCNVector3, SCNVector3) { // (direction, position)
@@ -210,9 +248,12 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     @objc private func reloadButtonTapped() {
         
-        guard let gunNode = self.sceneView.scene.rootNode.childNode(withName: "Gun", recursively: true) else {return}
+        player.curAmountOfBullet = player.AmountOfMagazine
+        updateMegazine()
         
+        guard let gunNode = self.sceneView.scene.rootNode.childNode(withName: "Gun", recursively: true) else {return}
         reloadGun(node: gunNode)
+        
     }
     
     
@@ -252,14 +293,8 @@ extension ARViewController: SCNPhysicsContactDelegate {
             
             DispatchQueue.main.async {
                 
-                if self.point ==  3 {
-                    let menuView = GameMenuView()
-                    menuView.frame = self.sceneView.bounds
-                    self.sceneView.addSubview(menuView)
-                    self.removeAllTarget()
-                    self.timer.invalidate()
-                    menuView.saveView.gamePointLabel.text = "\(self.point)"
-                    
+                if self.targetList.count >  6 {
+                    self.openMenuView()
                 }
                 
                 self.gamePointLabel.text = "\(self.point) 점"
@@ -269,6 +304,16 @@ extension ARViewController: SCNPhysicsContactDelegate {
             }
             
         }
+    }
+    
+    private func openMenuView() {
+        let menuView = GameMenuView()
+        menuView.frame = self.sceneView.bounds
+        self.sceneView.addSubview(menuView)
+        self.removeAllTarget()
+        self.timer.invalidate()
+        menuView.saveView.gamePointLabel.text = "\(self.point)"
+        player.curAmountOfBullet = 0
     }
 
 }
