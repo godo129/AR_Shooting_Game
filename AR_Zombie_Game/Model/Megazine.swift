@@ -43,6 +43,12 @@ class Megazine: UIButton {
         
     }
     
+    private func removeBulletViews() {
+        for bullet in bulletList {
+            bullet.removeFromSuperview()
+        }
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }   
