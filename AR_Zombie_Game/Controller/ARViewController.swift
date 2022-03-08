@@ -48,11 +48,22 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         self.sceneView.addSubview(bulletLabel)
         
         addGun()
+        targetLabel()
         gamePlay()
         
         NotificationCenter.default.addObserver(self, selector: #selector(saveComplete), name: gamePointSaveViewExit, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(gamePlay), name: gameMenuViewExit, object: nil)
         
+        
+    }
+    
+    private func targetLabel() {
+        
+        let label = UILabel()
+        label.text = "+"
+        label.frame = CGRect(x: self.view.center.x-3, y: self.view.center.y-48, width: 50, height: 50)
+        self.sceneView.addSubview(label)
+   
         
     }
     
@@ -195,9 +206,9 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             bulletsNode.position = position // SceneKit/AR coordinates are in meters
             let bulletDirection = direction
             let impulseVector = SCNVector3(
-                x: bulletDirection.x * Float(20),
-                y: bulletDirection.y * Float(20),
-                z: bulletDirection.z * Float(20)
+                x: bulletDirection.x * Float(10),
+                y: bulletDirection.y * Float(10),
+                z: bulletDirection.z * Float(10)
             )
 
     //        let forceVector = SCNVector3(bulletsNode.worldFront.x * 2, bulletsNode.worldFront.y * 2, bulletsNode.worldFront.z * 2)
