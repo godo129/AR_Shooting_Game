@@ -275,6 +275,18 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         
     }
     
+    @objc private func turningGun(node: SCNNode) {
+        
+//        let rotateAction = SCNAction.rotateBy(x: 0, y: 0.5, z: 0, duration: 1)
+//        let infiniteAction = SCNAction.repeatForever(rotateAction)
+//        node.runAction(infiniteAction)
+        
+        guard let currentCameraPosition = sceneView.pointOfView?.position else {return}
+        let toMovePosition = SCNVector3(currentCameraPosition.x, currentCameraPosition.y, currentCameraPosition.z-1.0)
+        let moveAction = SCNAction.move(to: toMovePosition, duration: 0.1)
+        node.runAction(moveAction)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
