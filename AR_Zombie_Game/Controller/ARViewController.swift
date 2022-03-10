@@ -35,8 +35,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         sceneView.delegate = self
         
         // Create a new scene
-//        let scene = SCNScene(named: "art.scnassets/Dungeon.scn")!
-        let scene = SCNScene()
+        let scene = SCNScene(named: "art.scnassets/Dungeon.scn")!
+//        let scene = SCNScene()
         
         // Set the scene to the view
         sceneView.scene = scene
@@ -85,6 +85,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     }
     
     @objc private func gamePlay() {
+        targetList = [SCNNode]()
         layoutMagazineView()
         reset()
         addReloadButton()
