@@ -25,6 +25,7 @@
 		F1C08EF227D06B1F00B23D3A /* PlayerInfomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C08EF127D06B1F00B23D3A /* PlayerInfomation.swift */; };
 		F1C08EF427D07DD400B23D3A /* PlayerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C08EF327D07DD400B23D3A /* PlayerData.swift */; };
 		F1C08EF627D08F0900B23D3A /* BulletLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C08EF527D08F0900B23D3A /* BulletLabel.swift */; };
+		F1C08EF827DB565400B23D3A /* UIBaord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C08EF727DB565400B23D3A /* UIBaord.swift */; };
 		F1E1816927BF459F0059E322 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1816827BF459F0059E322 /* AppDelegate.swift */; };
 		F1E1816B27BF459F0059E322 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = F1E1816A27BF459F0059E322 /* art.scnassets */; };
 		F1E1816D27BF459F0059E322 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E1816C27BF459F0059E322 /* ARViewController.swift */; };
@@ -57,6 +58,7 @@
 		F1C08EF127D06B1F00B23D3A /* PlayerInfomation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfomation.swift; sourceTree = "<group>"; };
 		F1C08EF327D07DD400B23D3A /* PlayerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerData.swift; sourceTree = "<group>"; };
 		F1C08EF527D08F0900B23D3A /* BulletLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletLabel.swift; sourceTree = "<group>"; };
+		F1C08EF727DB565400B23D3A /* UIBaord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBaord.swift; sourceTree = "<group>"; };
 		F1E1816527BF459F0059E322 /* AR_Zombie_Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AR_Zombie_Game.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1E1816827BF459F0059E322 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1E1816A27BF459F0059E322 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				F1C08EF527D08F0900B23D3A /* BulletLabel.swift */,
 				F1C08EF127D06B1F00B23D3A /* PlayerInfomation.swift */,
 				F1C08EF327D07DD400B23D3A /* PlayerData.swift */,
+				F1C08EF727DB565400B23D3A /* UIBaord.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				F1C08EF427D07DD400B23D3A /* PlayerData.swift in Sources */,
 				F183D43127C75B9400330E13 /* Zombie.swift in Sources */,
 				F1C08EF227D06B1F00B23D3A /* PlayerInfomation.swift in Sources */,
+				F1C08EF827DB565400B23D3A /* UIBaord.swift in Sources */,
 				F183D42B27C4A34C00330E13 /* BulletsLabel.swift in Sources */,
 				F183D42F27C6200000330E13 /* Bullet.swift in Sources */,
 				F1C08EE027CC933100B23D3A /* GameMenuButton.swift in Sources */,
