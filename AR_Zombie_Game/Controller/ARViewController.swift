@@ -21,6 +21,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     var bulletLabel = BulletLabel()
     
+    let UIboard = UIBaord(position: SCNVector3(x: 0, y: -0.5, z: -0.5))
+    
 //    private let menuView = GameMenuView()
     
     private var point = 0
@@ -46,6 +48,9 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         
         self.sceneView.addSubview(megazine)
         self.sceneView.addSubview(bulletLabel)
+        
+        
+        self.sceneView.scene.rootNode.addChildNode(UIboard)
         
         addGun()
         targetLabel()
