@@ -203,6 +203,20 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         
     }
     
+    @objc private func UIClick(recognizer: UITapGestureRecognizer) {
+        guard let sceneView = recognizer.view as? SCNView else {return}
+        let touchLocation = recognizer.location(in: sceneView)
+        let hitTestResults = sceneView.hitTest(touchLocation, options: [:])
+        if !hitTestResults.isEmpty {
+            guard let nodeName = hitTestResults.first?.node.name else {return}
+            
+            if nodeName == "cancelButton" {
+                UIboard.removeFromParentNode()
+                
+            }
+        }
+    }
+    
     @objc private func shoot(recognizer: UITapGestureRecognizer) {
         
         
