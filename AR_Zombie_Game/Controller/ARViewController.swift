@@ -207,13 +207,24 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         guard let sceneView = recognizer.view as? SCNView else {return}
         let touchLocation = recognizer.location(in: sceneView)
         let hitTestResults = sceneView.hitTest(touchLocation, options: [:])
+
         if !hitTestResults.isEmpty {
             guard let nodeName = hitTestResults.first?.node.name else {return}
             
-            if nodeName == "cancelButton" {
-                UIboard.removeFromParentNode()
+
+            switch nodeName {
                 
+            case "cancelButton" :
+                UIboard.removeFromParentNode()
+            case "save" :
+                UIboard.childNode(withName: "save", recursively: true)?.removeFromParentNode()
+            case "replay" :
+                UIboard.removeFromParentNode()
+                gamePlay()
+            default :
+                print(nodeName)
             }
+            
         }
     }
     
