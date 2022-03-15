@@ -23,6 +23,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     let UIboard = UIBaord(position: SCNVector3(x: 0, y: -0.5, z: -0.5))
     
+    let ARKeyboard = ARKeyBoard(position: SCNVector3(0, -0.3, -0.3))
+    
 //    private let menuView = GameMenuView()
     
     private var point = 0
@@ -218,9 +220,14 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 UIboard.removeFromParentNode()
             case "save" :
                 UIboard.childNode(withName: "save", recursively: true)?.removeFromParentNode()
+                self.sceneView.scene.rootNode.addChildNode(ARKeyboard)
             case "replay" :
                 UIboard.removeFromParentNode()
                 gamePlay()
+            case "SHIFT" :
+                ARKeyboard.pressedShift  = !ARKeyboard.pressedShift
+                guard let keyboardNode = ARKeyboard.childNode(withName: "Keyboard", recursively: true) else {return}
+                ARKeyboard.addKey(position: ARKeyboard.position, keyboard: ARKeyboard.keyboard , keyboardNode: keyboardNode)
             default :
                 print(nodeName)
             }
