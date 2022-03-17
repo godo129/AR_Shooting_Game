@@ -267,6 +267,67 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
     }
     
+    @objc private func shotGunShoot(recognizer: UITapGestureRecognizer) {
+        
+        if player.curAmountOfBullet > 3 {
+            
+            let bulletNode1 = Bullet()
+            let (direction, position) = self.getUserVector()
+            bulletNode1.position = position
+            let bulletDirection = direction
+            let impulseVector1 = SCNVector3(
+                x: bulletDirection.x * Float(20),
+                y: bulletDirection.y * Float(10),
+                z: bulletDirection.z * Float(10)
+            )
+            
+            let bulletNode2 = Bullet()
+            bulletNode2.position = position
+            let impulseVector2 = SCNVector3(
+                x: bulletDirection.x * Float(10),
+                y: bulletDirection.y * Float(20),
+                z: bulletDirection.z * Float(10)
+            )
+            
+            let bulletNode3 = Bullet()
+            bulletNode3.position = position
+            let impulseVector3 = SCNVector3(
+                x: bulletDirection.x * Float(10),
+                y: bulletDirection.y * Float(10),
+                z: bulletDirection.z * Float(20)
+            )
+            
+            bulletNode1.physicsBody?.applyForce(impulseVector1, asImpulse: true)
+            sceneView.scene.rootNode.addChildNode(bulletNode1)
+            
+            bulletNode2.physicsBody?.applyForce(impulseVector2, asImpulse: true)
+            sceneView.scene.rootNode.addChildNode(bulletNode2)
+            
+            bulletNode3.physicsBody?.applyForce(impulseVector3, asImpulse: true)
+            sceneView.scene.rootNode.addChildNode(bulletNode3)
+
+            //3 seconds after shooting the bullet, remove the bullet node
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
+                // remove node
+                
+            })
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                bulletNode1.removeFromParentNode()
+                bulletNode2.removeFromParentNode()
+                bulletNode3.removeFromParentNode()
+            }
+            
+            player.usedBullet()
+            player.usedBullet()
+            player.usedBullet()
+            
+            updateMegazine()
+            
+        }
+        
+    }
+    
     private func getUserVector() -> (SCNVector3, SCNVector3) { // (direction, position)
         if let frame = self.sceneView.session.currentFrame {
             let mat = SCNMatrix4(frame.camera.transform) // 4x4 transform matrix describing camera in world space
