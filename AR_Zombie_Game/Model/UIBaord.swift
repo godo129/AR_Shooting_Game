@@ -10,16 +10,24 @@ import SceneKit
 
 class UIBaord: SCNNode {
     
+    var nickName = "Guest"
+    
+    var positon: SCNVector3!
+    var board: SCNBox!
+    
+    let boardHelper = UIBoardHelper.sharedInstance
+    
     
     init(position: SCNVector3) {
         
         super.init()
         
-        let board = SCNBox(width: 0.7, height: 1.5, length: 0.01, chamferRadius: 0)
-//        let board = SCNPlane(width: 0.5, height: 0.3)
-        board.firstMaterial?.isDoubleSided = true
-        board.firstMaterial?.diffuse.contents = UIColor.green
-        let boardNode = SCNNode(geometry: board)
+        self.positon = position
+        self.board = SCNBox(width: 0.7, height: 1.5, length: 0.01, chamferRadius: 0)
+        
+        self.board.firstMaterial?.isDoubleSided = true
+        self.board.firstMaterial?.diffuse.contents = UIColor.green
+        let boardNode = SCNNode(geometry: self.board)
         boardNode.name = "board"
         boardNode.position = position
         
@@ -56,14 +64,55 @@ class UIBaord: SCNNode {
 //        replayTextNode.position = SCNVector3(-replayImage.width/3, -replayImage.height/4, replayButton.length)
 //        replayButtonNode.addChildNode(replayTextNode)
         
-        let replayButton = UIBoardButton(position: position, detailPosition: 1, boardWidth: board.width, boardHeight: board.height, boardLength: board.length, image: UIImage(named: "replay")!, text: "replay")
-        self.addChildNode(replayButton)
+//        let replayButton = UIBoardButton(position: position, detailPosition: 1, boardWidth: board.width, boardHeight: board.height, boardLength: board.length, image: UIImage(named: "replay")!, text: "replay")
+//        self.addChildNode(replayButton)
+//
+//        let saveButton = UIBoardButton(position: position, detailPosition: 4, boardWidth: board.width, boardHeight: board.height, boardLength: board.length, image: UIImage(named: "target")!, text: "save")
+//
+//        let nickNameBoard = UIBoardButton(position: position, detailPosition: 1, boardWidth: board.width, boardHeight: board.height, boardLength: board.length, image: UIImage(named: "")!, text: nickName)
+//        self.addChildNode(nickNameBoard)
+//
+//        self.addChildNode(saveButton)
         
-        let saveButton = UIBoardButton(position: position, detailPosition: 4, boardWidth: board.width, boardHeight: board.height, boardLength: board.length, image: UIImage(named: "target")!, text: "save")
-        self.addChildNode(saveButton)
-
-        self.addChildNode(cancelButtonNode)
+        initializeBoard()
+        
         self.addChildNode(boardNode)
+        self.addChildNode(cancelButtonNode)
+        
+        
+    }
+    
+    func initializeBoard() {
+        
+        switch boardHelper.state {
+        case .Home:
+            
+            removeBoardsElements()
+            
+            let replayButton = UIBoardButton(position: position, detailPosition: 1, boardWidth: board.width, boardHeight: board.height, boardLength: board.length, image: UIImage(named: "replay")!, text: "replay")
+            self.addChildNode(replayButton)
+            
+            let saveButton = UIBoardButton(position: position, detailPosition: 4, boardWidth: board.width, boardHeight: board.height, boardLength: board.length, image: UIImage(named: "target")!, text: "save")
+            self.addChildNode(saveButton)
+            
+        case .Save:
+            
+            removeBoardsElements()
+            
+            let nickNameBoard = UIBoardButton(position: position, detailPosition: 1, boardWidth: board.width, boardHeight: board.height, boardLength: board.length, image: UIImage(named: "")!, text: nickName)
+            self.addChildNode(nickNameBoard)
+            
+        }
+    }
+    
+    private func removeBoardsElements() {
+        for node in self.childNodes {
+            guard let name = node.name else {return}
+            
+            if name != "board" {
+                node.removeFromParentNode()
+            }
+        }
         
     }
     
