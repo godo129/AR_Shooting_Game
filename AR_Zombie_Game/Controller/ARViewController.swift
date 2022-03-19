@@ -267,6 +267,14 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
     }
     
+    @objc private func burstShoot(recognizer: UITapGestureRecognizer) {
+        
+        for _ in 0..<3 {
+            shotGunShoot(recognizer: recognizer)
+        }
+        
+    }
+    
     @objc private func shotGunShoot(recognizer: UITapGestureRecognizer) {
         
         if player.curAmountOfBullet > 3 {
