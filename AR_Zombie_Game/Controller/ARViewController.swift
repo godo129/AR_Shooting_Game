@@ -228,8 +228,19 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
                 ARKeyboard.pressedShift  = !ARKeyboard.pressedShift
                 guard let keyboardNode = ARKeyboard.childNode(withName: "Keyboard", recursively: true) else {return}
                 ARKeyboard.addKey(position: ARKeyboard.position, keyboard: ARKeyboard.keyboard , keyboardNode: keyboardNode)
+            case "SPACE" :
+                UIboard.nickName += " "
+                UIboard.initializeBoard()
+            case "<-" :
+                if UIboard.nickName != "" {
+                    UIboard.nickName.removeLast()
+                    UIboard.initializeBoard()
+                }
             default :
-                print(nodeName)
+                if nodeName.count == 1 {
+                    UIboard.nickName += nodeName
+                    UIboard.initializeBoard()
+                }
             }
             
         }
