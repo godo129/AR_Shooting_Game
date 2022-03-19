@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F10CB57727E58CBE00523CE1 /* UIBoardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10CB57627E58CBE00523CE1 /* UIBoardHelper.swift */; };
 		F183D42927C4A1B500330E13 /* GunModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183D42827C4A1B500330E13 /* GunModel.swift */; };
 		F183D42B27C4A34C00330E13 /* BulletsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183D42A27C4A34C00330E13 /* BulletsLabel.swift */; };
 		F183D42D27C4A3FC00330E13 /* ReloadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F183D42C27C4A3FC00330E13 /* ReloadButton.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F10CB57627E58CBE00523CE1 /* UIBoardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBoardHelper.swift; sourceTree = "<group>"; };
 		F183D42827C4A1B500330E13 /* GunModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GunModel.swift; sourceTree = "<group>"; };
 		F183D42A27C4A34C00330E13 /* BulletsLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletsLabel.swift; sourceTree = "<group>"; };
 		F183D42C27C4A3FC00330E13 /* ReloadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadButton.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				F1C08EF327D07DD400B23D3A /* PlayerData.swift */,
 				F1C08EF727DB565400B23D3A /* UIBaord.swift */,
 				F1C47A4E27DF327500FAC919 /* ARKeyBoard.swift */,
+				F10CB57627E58CBE00523CE1 /* UIBoardHelper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				F1E1818727C34DBE0059E322 /* DateToString.swift in Sources */,
 				F1E1816D27BF459F0059E322 /* ARViewController.swift in Sources */,
 				F1E1816927BF459F0059E322 /* AppDelegate.swift in Sources */,
+				F10CB57727E58CBE00523CE1 /* UIBoardHelper.swift in Sources */,
 				F1C08EE827CDBCBF00B23D3A /* GamePointSaveButton.swift in Sources */,
 				F1C08EE627CDB8F200B23D3A /* NickNameTextField.swift in Sources */,
 				F1C08EEE27CF3FF100B23D3A /* Megazine.swift in Sources */,
