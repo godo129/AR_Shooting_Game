@@ -66,15 +66,36 @@ class UIBaord: SCNNode {
         
 //        let replayButton = UIBoardButton(position: position, detailPosition: 1, boardWidth: board.width, boardHeight: board.height, boardLength: board.length, image: UIImage(named: "replay")!, text: "replay")
 //        self.addChildNode(replayButton)
-//
+////
 //        let saveButton = UIBoardButton(position: position, detailPosition: 4, boardWidth: board.width, boardHeight: board.height, boardLength: board.length, image: UIImage(named: "target")!, text: "save")
+//        self.addChildNode(saveButton)
 //
 //        let nickNameBoard = UIBoardButton(position: position, detailPosition: 1, boardWidth: board.width, boardHeight: board.height, boardLength: board.length, image: UIImage(named: "")!, text: nickName)
 //        self.addChildNode(nickNameBoard)
 //
-//        self.addChildNode(saveButton)
+
         
-        initializeBoard()
+        switch boardHelper.state {
+        case .Home:
+            
+            removeBoardsElements()
+            
+            let replayButton = UIBoardButton(position: position, detailPosition: 1, boardWidth: board.width, boardHeight: board.height, boardLength: board.length, image: UIImage(named: "replay")!, text: "replay")
+            self.addChildNode(replayButton)
+            
+            let saveButton = UIBoardButton(position: position, detailPosition: 4, boardWidth: board.width, boardHeight: board.height, boardLength: board.length, image: UIImage(named: "target")!, text: "save")
+            self.addChildNode(saveButton)
+            
+        case .Save:
+            
+            removeBoardsElements()
+            
+            let nickNameBoard = UIBoardButton(position: position, detailPosition: 1, boardWidth: board.width, boardHeight: board.height, boardLength: board.length, image: UIImage(named: "")!, text: nickName)
+            self.addChildNode(nickNameBoard)
+            
+        }
+        
+//        initializeBoard()
         
         self.addChildNode(boardNode)
         self.addChildNode(cancelButtonNode)
