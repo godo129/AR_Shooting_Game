@@ -102,16 +102,18 @@ class KeyButton: SCNNode {
         
         self.name = key
         
-        let keyButton = SCNBox(width: keyboard.width/15, height: keyboard.height/7, length: 0.07, chamferRadius: 0)
+        let keyButton = SCNBox(width: keyboard.width/15, height: keyboard.height/7, length: keyboard.length*1.5, chamferRadius: 0)
         keyButton.firstMaterial?.diffuse.contents = UIColor.gray
         self.geometry = keyButton
         self.position = position
+        let keyNode = SCNNode(geometry: keyButton)
+        self.addChildNode(keyNode)
         
         let text = SCNText(string: key, extrusionDepth: 1)
         text.firstMaterial?.diffuse.contents = UIColor.white
         let textNode = SCNNode(geometry: text)
-        self.addChildNode(textNode)
-        textNode.scale = SCNVector3(keyButton.width, keyButton.width, 0.01)
+        keyNode.addChildNode(textNode)
+        textNode.scale = SCNVector3(keyButton.width/15, keyButton.width/6, 0.0001)
         textNode.position = SCNVector3(0, 0, keyButton.length)
         
     }
